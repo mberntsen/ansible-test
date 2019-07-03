@@ -18,7 +18,7 @@
         name: mongodb-org
         update_cache: yes
       notify:
-    - start mongodb
+        - start mongodb
   handlers:
     - name: start mongodb
       service: name=mongod state=started
