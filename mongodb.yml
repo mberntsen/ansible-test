@@ -1,0 +1,20 @@
+---
+# https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+- name: test
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Import MongoDB public GPG Key
+      apt_key:
+        keyserver: keyserver.ubuntu.com
+#        id: 4B7C549A058F8B6B
+        id: 68818C72E52529D4
+    - name: Add MongoDB repository into sources list
+      apt_repository:
+        repo: deb http://repo.mongodb.org/apt/ubuntu {{ansible_distribution_release}}/mongodb-org/4.0 multiverse
+        state: present
+    - name:  Install MongoDB package
+      apt:
+        name: mongodb-org
+        update_cache: yes
+
